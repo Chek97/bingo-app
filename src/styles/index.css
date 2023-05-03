@@ -8,10 +8,15 @@
     font-family: 'Sigmar', cursive;
 }
 
+html {
+    position: relative;
+}
+
 .container {
     background-color: #e2e8ee;
     width: 100vw;
     min-height: 100vh;
+    margin-bottom: 50px;
 }
 
 header {
@@ -22,4 +27,25 @@ header {
 header > h1 {
     font-size: 48px;
     color: #1A65C7;
+}
+
+
+.footer-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    padding: 10px;
+    background-color: #1A65C7;
+    text-align: center;
+}
+
+.footer-container > p {
+    color: #fff;
+    font-style: italic;
+}
+
+.footer-container > p > strong {
+    font-size: 20px;
+    font-weight: lighter;
 }
