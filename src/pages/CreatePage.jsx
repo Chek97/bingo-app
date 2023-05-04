@@ -30,7 +30,7 @@ export const CreatePage = () => {
     const newPositions = carton.positions.map((position, i) => i === 12 ? cartonId : position);
     setCarton({ id: +cartonId, positions: newPositions });
   }, [cartonId]);
-  
+
   return (
     <div className="create-container">
       <header>
@@ -53,12 +53,12 @@ export const CreatePage = () => {
         cartonList.length > 0 && (
           <ul className="carton-list">
             {cartonList.map(c => (
-              <CartonItem 
-                title={`Carton ${c.id}`} 
-                carton={c} 
-                key={c.id} 
-                setCarton={setCarton} 
-                setLoading={setLoading} 
+              <CartonItem
+                title={`Carton ${c.id}`}
+                carton={c}
+                key={c.id}
+                setCarton={setCarton}
+                setLoading={setLoading}
                 setCartonId={setCartonId}
               />
             ))}

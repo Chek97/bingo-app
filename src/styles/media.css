@@ -1,0 +1,93 @@
+@media only screen and (max-width: 600px) {
+    .footer-container > p {
+        font-size: 12px;
+    }
+
+    .options-container {
+        border: 1px solid red;
+        flex-direction: column;
+    }
+
+    .button-action {
+        margin-top: 50px;
+        width: 200px;
+    }
+
+    .carton-index--form {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .carton-index--form__input, .carton-container--form__input {
+        width: 100%;
+    }
+
+    .carton-index--form__button {
+        margin-top: 20px;
+    }
+        
+    .carton-list {
+        border: 2px solid #1A65C7;
+        border-radius: 10px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        list-style: none;
+        height: 150px;
+        padding-top: 20px;
+        overflow: auto;
+    }
+    
+    .carton-list--item {
+        border: 1px solid red;
+        width: 100px;
+        height: 100%;
+        height: 15px;
+        /* width: 30%;
+        height: 100px;
+        margin-left: 20px;
+        margin-right: 20px; */
+    }
+
+    .carton-list--item > h3 {
+        padding: 0;
+        font-size: 8px;
+        margin: 0;
+    }
+
+    .carton-table {
+        width: 100%;
+        height: 100%;
+        border-collapse: collapse;
+    }
+    
+     td {
+        border: 1px solid #000;
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        font-size: 4px;
+    }
+
+    .carton-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .carton-container--display {
+        padding: 0;
+        width: 100%;
+    }
+
+    .carton-container--form {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .carton-container--form__label {
+        font-size: 14px;
+        text-align: center;
+    }
+}

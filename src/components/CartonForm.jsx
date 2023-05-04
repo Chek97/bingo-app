@@ -22,9 +22,9 @@ export const CartonForm = ({ id, carton, setCarton }) => {
         e.preventDefault();
         // Todo: validar numeros
         const newPositions = positions.map((p, i) => {
-            if(i === position){
+            if (i === position) {
                 return value;
-            }else{
+            } else {
                 return p;
             }
         });
@@ -42,7 +42,7 @@ export const CartonForm = ({ id, carton, setCarton }) => {
                     <thead>
                         <tr>
                             <th className="table-bingo-item">B</th>
-                            <th  className="table-bingo-item">I</th>
+                            <th className="table-bingo-item">I</th>
                             <th className="table-bingo-item">N</th>
                             <th className="table-bingo-item">G</th>
                             <th className="table-bingo-item">O</th>
@@ -88,17 +88,19 @@ export const CartonForm = ({ id, carton, setCarton }) => {
                 </table>
             </div>
             <form onSubmit={handleSubmit} className="carton-container--form">
-                    <label className="carton-container--form__label">Escriba el numero para la posicion marcada</label>
-                    <input 
-                        type="number" 
-                        placeholder="Ingresa el numero" 
-                        className="carton-container--form__input" 
-                        value={value}
-                        name="value"
-                        onChange={handleChange}
-                    />
-                    {error &&<Error />}
-                    <button className="carton-container--form__submit">Agregar</button>
+                <label className="carton-container--form__label">Escriba el numero para la posicion marcada</label>
+                <input
+                    type="number"
+                    placeholder="Ingresa el numero"
+                    className="carton-container--form__input"
+                    value={value}
+                    name="value"
+                    onChange={handleChange}
+                />
+                {error && <Error />}
+                <button className="carton-container--form__submit">
+                    <i className="fas fa-plus-circle" aria-hidden="true"></i> Agregar
+                </button>
             </form>
         </div>
     )

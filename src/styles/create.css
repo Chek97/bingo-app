@@ -34,20 +34,16 @@
     background-color: #092a55;
 }
 
-
-.carton-list {
+/* .carton-list {
     display: flex;
     list-style-type: none;
-    justify-content: space-around;
-    padding: 20px 0;
-}
+} */
 
-.carton-list--item {
-    border: 1px solid red;
+/* .carton-list--item {
     text-align: center;
     width: 160px;
     height: 160px;
-}
+} */
 
 .carton-list--item > h3 {
     border-bottom: none;
@@ -60,21 +56,21 @@
     background-color: #bcbcbc;
 }
 
-.carton-table {
+/* .carton-table {
     padding: 10px;
     width: 90%;
     border-collapse: collapse;
     border: 1px solid #000;
-}
+} */
 
-td {
+/* td {
     border: 1px solid #000;
     width: 20px;
     height: 20px;
     font-size: 10px;
     font-weight: bold;
     background-color: #fff;
-}
+} */
 
 .carton-container {
     display: flex;

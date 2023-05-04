@@ -1,18 +1,28 @@
 import { CartonItem } from "../components"
 
 export const PlayPage = () => {
+
+  // Local storage
+  const cartonList = JSON.parse(localStorage.getItem('cartons')) || [];
+
   return (
     <div className="container">
       <header>
         <h1>JUGAR</h1>
       </header>
-      <ul className="carton-list">
-        <CartonItem title="Carton 01" />
-        <CartonItem title="Carton 02" />
-        <CartonItem title="Carton 03" />
-        <CartonItem title="Carton 04" />
-        <CartonItem title="Carton 05" />
-      </ul>
+      {
+        cartonList.length > 0 && (
+          <ul className="carton-list">
+            {cartonList.map(c => (
+              <CartonItem
+                title={`Carton ${c.id}`}
+                carton={c}
+                key={c.id}
+              />
+            ))}
+          </ul>
+        )
+      }
       {/* CREAR COMPONENTE PARA MOSTRAR LA TABLA CON LOS VALORES */}
     </div>
   )

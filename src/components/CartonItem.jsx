@@ -1,5 +1,5 @@
 
-export const CartonItem = ({title, carton, setCarton, setLoading, setCartonId}) => {
+export const CartonItem = ({ title, carton, setCarton, setLoading, setCartonId }) => {
 
     const handleClick = () => {
         setCarton(carton);
