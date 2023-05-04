@@ -121,7 +121,7 @@
 }
 
 /* Cambiar clase por si algo */
-.marked:hover {
+.marked {
     cursor: pointer;
     background-color: #bcbcbc;
 }
