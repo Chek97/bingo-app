@@ -5,7 +5,11 @@ import { CartonForm, CartonItem } from "../components";
 export const CreatePage = () => {
 
   // Local storage
-  const cartonList = JSON.parse(localStorage.getItem('cartons')) || [];
+  const cartonList = []; 
+  try{
+    const cartons = JSON.parse(localStorage.getItem('cartons')) || [];
+    cartonList.push(...cartons);
+  }catch(e){}
 
   // Hooks
   const [carton, setCarton] = useState({
