@@ -138,4 +138,21 @@
         font-size: 24px;
         text-align: center;
     }
+
+    .active-cartons {
+        padding: 10px 0;
+        text-align: center;
+        margin: 10px 10%;
+        color: #fff;
+        background-color: #1A65C7;
+        border-radius: 10px;
+    }
+
+    .message-number {
+        margin-top: 5px;
+        background-color: #ff1b1b;
+        border-radius: 10px;
+        padding: 5px;
+        color: #fff;
+    }
 }

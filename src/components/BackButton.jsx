@@ -9,8 +9,10 @@ export const BackButton = () => {
     }
 
   return (
-    <div>
-        <button onClick={handleReturn}><i className="fa fa-arrow-left" aria-hidden="true"></i> Regresar</button>
+    <div className="back-button--container">
+        <button onClick={handleReturn} className="back-button--button">
+          <i className="fa fa-arrow-left" aria-hidden="true"></i> Regresar
+        </button>
     </div>
   )
 }

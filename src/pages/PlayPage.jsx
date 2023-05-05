@@ -10,12 +10,17 @@ export const PlayPage = () => {
   } catch (error) {
     console.log(error);
   }
+  const [list, setList] = useState(cartonList);
   const [carton, setCarton] = useState({});
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState("");
   const [error, setError] = useState({
     ok: false,
     message: ""
+  });
+  const [success, setSuccess] = useState({
+    add: false,
+    message: false
   });
 
   const { positions } = carton || [];
@@ -32,6 +37,10 @@ export const PlayPage = () => {
       ok: false,
       message: ""
     });
+    setSuccess({
+      add: false,
+      message: false
+    });
   }
 
   const handleSubmit = (e) => {
@@ -43,10 +52,19 @@ export const PlayPage = () => {
         for(let i = 0; i < cartonItem.positions.length; i++){
           if(cartonItem.positions[i][0] === value && i !== 12){
             cartonItem.positions[i][1] = true;
+            setCarton(cartonItem);
+            setSuccess({
+              add: true,
+              message: true
+            });
           }
         }
+        setSuccess({
+          add: true,
+          message: false
+        });
       });
-      
+      setList(cartonList);
       localStorage.setItem("cartons", JSON.stringify(cartonList));
     
     }else{
@@ -55,18 +73,17 @@ export const PlayPage = () => {
         message: error
       });
     }
-  } 
-//ACTUALIZAR EN TIEMPO REAL LAS TABLAS Y LA TABLA NORMAL
-
+  }
+  
   return (
     <div className="container">
       <BackButton />
       <header>
         <h1>JUGAR</h1>
       </header>
-      <p>Cartones Activos</p>
+      <p className="active-cartons">Cartones Activos</p>
       <ul className="carton-active-list">
-        {cartonList.map(carton => (
+        {list.map(carton => (
           <li className="carton-active-list--item" key={carton.id} onClick={() => handlePosition(carton)}>
             <h5>#{carton.id}</h5>
             <table className="carton-active-list--table">
@@ -165,7 +182,7 @@ export const PlayPage = () => {
             </table>
           </div>
           <form className="carton-container--form" onSubmit={handleSubmit}>
-            <label className="carton-container--form__label">Escriba el numero para la posicion marcada</label>
+            <label className="carton-container--form__label">Escriba el numero a marcar en sus cartones</label>
             <input
               type="number"
               placeholder="Ingresa el numero"
@@ -179,6 +196,7 @@ export const PlayPage = () => {
             <button className="carton-container--form__submit">
               <i className="fas fa-plus-circle" aria-hidden="true"></i> Agregar
             </button>
+            {success.add && <p className="message-number">{success.message ? 'El numero fue agregado a uno de tus cartones' : 'No tienes ningun carton que tenga ese numero'}</p>}
           </form>
         </div>
       )}

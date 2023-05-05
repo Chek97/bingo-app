@@ -50,3 +50,22 @@ header > h1 {
     font-size: 20px;
     font-weight: lighter;
 }
+
+.back-button--container {
+    padding: 15px 0;
+}
+
+.back-button--button {
+    background-color: #1A65C7;
+    border: none;
+    padding: 10px;
+    margin-left: 10px;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.back-button--button:hover {
+    background-color: #092a55;
+    cursor: pointer;
+}
