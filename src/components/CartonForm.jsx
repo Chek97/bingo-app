@@ -1,12 +1,18 @@
 import { useState } from "react";
+import { validateCartonValueForm } from "../helpers/formValidation";
 import { Error } from "./Error";
 
-export const CartonForm = ({ id, carton, setCarton }) => {
+export const CartonForm = ({ id, carton, setCarton, cartonList }) => {
 
     const { positions } = carton;
+
+
     const [position, setPosition] = useState(0);
     const [mark, setMark] = useState(0);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState({
+        ok: false,
+        error: ""
+    });
     const [value, setValue] = useState("");
 
     const handlePostion = (id) => {
@@ -16,6 +22,7 @@ export const CartonForm = ({ id, carton, setCarton }) => {
 
     const handleChange = (e) => {
         setValue(e.target.value);
+        setError({ok: false, error: ""});
     }
 
     const getMarkClass = (id) =>  `position-value ${ mark === id && 'marked'}`;
@@ -23,21 +30,44 @@ export const CartonForm = ({ id, carton, setCarton }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Todo: validar numeros
-        const newPositions = positions.map((p, i) => (position === i ? value : p));
-        setCarton({
-            ...carton,
-            positions: newPositions
-        });
         
-        const increment = position === 24 ? 0 : position == 11 ? 2 : 1;
-        handlePostion(position + increment);
-        setValue("");
+        console.log({
+            value,
+            position,
+            positions
+        });
+        const error = validateCartonValueForm(value, position, positions);
+        
+        if(error === undefined){
+            const newPositions = positions.map((p, i) => (position === i ? [value, false] : p));
+            const cartonSelected = cartonList.find(c => c.id === id);
+
+            cartonSelected.positions = newPositions;
+
+            const cartonIndex = cartonList.indexOf(cartonSelected);
+            cartonList[cartonIndex] = cartonSelected;
+
+            setCarton({
+                ...carton,
+                positions: newPositions
+            });
+
+            localStorage.setItem("cartons", JSON.stringify(cartonList));
+            
+            const increment = position === 24 ? 0 : position == 11 ? 2 : 1;
+            handlePostion(position + increment);
+            setValue("");
+        }else{
+            setError({
+                ok: true,
+                error
+            });
+            setValue("");   
+        }        
     }
-    console.log("Valor", mark, getMarkClass(mark), typeof mark);
 
     return (
-        <div className="carton-container"> valor {mark}
+        <div className="carton-container">
             <div className="carton-container--display">
                 <h2>Carton <span>#{id}</span></h2>
                 <table className="carton-container--display__table">
@@ -98,8 +128,9 @@ export const CartonForm = ({ id, carton, setCarton }) => {
                     value={value}
                     name="value"
                     onChange={handleChange}
+                    required
                 />
-                {error && <Error />}
+                {error.ok && <Error message={error.error} />}
                 <button className="carton-container--form__submit">
                     <i className="fas fa-plus-circle" aria-hidden="true"></i> Agregar
                 </button>

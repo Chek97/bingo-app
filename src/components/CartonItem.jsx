@@ -1,54 +1,16 @@
 
-export const CartonItem = ({ title, carton, setCarton, setLoading, setCartonId }) => {
+export const CartonItem = ({ title, setCarton, cartonList, setLoading, setTitle }) => {
 
     const handleClick = () => {
-        setCarton(carton);
+        const cartonSelected = cartonList.find(c => c.id === title);
+        setCarton(cartonSelected);
+        setTitle(cartonSelected.id);
         setLoading(true);
-        setCartonId(carton.id);
     }
 
     return (
         <li className="carton-list--item" onClick={handleClick}>
-            <h3>{title}</h3>
-            <table className="carton-table">
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>{title}</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+            <p># {title}</p>
         </li>
     )
 }
