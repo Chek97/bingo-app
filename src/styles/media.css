@@ -90,7 +90,6 @@
     }
 
     .carton-active-list {
-        border: 1px solid red;
         margin: 0 10%;
         list-style-type: none;
         overflow-x: scroll;
@@ -105,6 +104,11 @@
         margin: 10px;
     }
 
+    .carton-active-list--item:hover {
+        border: 2px solid #092a55;
+        cursor: pointer;
+    }
+
     .carton-active-list--item > h5 {
         text-align: center;
         background-color: #1A65C7;
@@ -117,5 +121,21 @@
     .carton-active-list--table {
         border-collapse: collapse;
         padding: 10px;
+        width: 80px;
+    }
+
+    .position-id {
+        background-color: #092a55;
+    }
+
+    .position-cheked {
+        background-color: #14f500;
+    }
+
+    .carton-container--display__table > tbody > tr > td {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        text-align: center;
     }
 }
